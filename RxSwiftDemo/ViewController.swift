@@ -62,12 +62,19 @@ class ViewController: UIViewController {
         tableView.rx.modelSelected(Product.self).bind { (model) in
             print("\(model.title)")
             print("\(model.imageName)")
-            
+            self.pushToDetails(item: model)
         }.disposed(by: disposeBag)
         //fetch items
         viewModel.fetchItems()
     }
 
+    private func pushToDetails(item: Product){
+        let _storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let detailsVC: DetailsViewController = _storyboard.instantiateViewController(identifier: "DetailsVCIdentifier", creator: { (coder) -> DetailsViewController? in
+            return  DetailsViewController(coder: coder, detailsViewModel: DetailsViewModel(item: item, notification: NotificationCenter.default))
+        })
+        self.navigationController?.pushViewController(detailsVC, animated: true)
+    }
 
 }
 

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		2A03F06A267CD03600B8AF9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A03F068267CD03600B8AF9A /* Main.storyboard */; };
 		2A03F06C267CD03900B8AF9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A03F06B267CD03900B8AF9A /* Assets.xcassets */; };
 		2A03F06F267CD03900B8AF9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A03F06D267CD03900B8AF9A /* LaunchScreen.storyboard */; };
+		2A94D74026820084009C8DC1 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A94D73F26820084009C8DC1 /* DetailsViewController.swift */; };
 		351A6437D9B4CA09728C8FC7 /* Pods_RxSwiftDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7415BED0BB45FC7CCAAA281C /* Pods_RxSwiftDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		2A03F06B267CD03900B8AF9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A03F06E267CD03900B8AF9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A03F070267CD03900B8AF9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A94D73F26820084009C8DC1 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		5F3688673057993E4FBECF13 /* Pods-RxSwiftDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftDemo.debug.xcconfig"; path = "Target Support Files/Pods-RxSwiftDemo/Pods-RxSwiftDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		7415BED0BB45FC7CCAAA281C /* Pods_RxSwiftDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7ADC9654243A946E6DE1B1 /* Pods-RxSwiftDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftDemo.release.xcconfig"; path = "Target Support Files/Pods-RxSwiftDemo/Pods-RxSwiftDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -56,7 +58,6 @@
 				5F3688673057993E4FBECF13 /* Pods-RxSwiftDemo.debug.xcconfig */,
 				9B7ADC9654243A946E6DE1B1 /* Pods-RxSwiftDemo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -84,6 +85,7 @@
 				2A03F062267CD03600B8AF9A /* AppDelegate.swift */,
 				2A03F064267CD03600B8AF9A /* SceneDelegate.swift */,
 				2A03F066267CD03600B8AF9A /* ViewController.swift */,
+				2A94D73F26820084009C8DC1 /* DetailsViewController.swift */,
 				2A03F068267CD03600B8AF9A /* Main.storyboard */,
 				2A03F06B267CD03900B8AF9A /* Assets.xcassets */,
 				2A03F06D267CD03900B8AF9A /* LaunchScreen.storyboard */,
@@ -209,6 +211,7 @@
 				2A03F067267CD03600B8AF9A /* ViewController.swift in Sources */,
 				2A03F063267CD03600B8AF9A /* AppDelegate.swift in Sources */,
 				2A03F065267CD03600B8AF9A /* SceneDelegate.swift in Sources */,
+				2A94D74026820084009C8DC1 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +288,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -340,7 +343,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -359,6 +362,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3QCVS5M6Q4;
 				INFOPLIST_FILE = RxSwiftDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -379,6 +383,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3QCVS5M6Q4;
 				INFOPLIST_FILE = RxSwiftDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
