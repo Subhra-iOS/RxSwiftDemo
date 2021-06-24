@@ -9,7 +9,11 @@ import UIKit
 import Combine
 import Foundation
 
-class DetailsViewController: UIViewController, UITextFieldDelegate {
+enum TextInputError: Error {
+    case justInputError
+}
+
+class DetailsViewController: UIViewController {
     
     @IBOutlet weak private var toggleSwitch: UISwitch!
     @IBOutlet weak private var tapButton: UIButton!
@@ -19,6 +23,7 @@ class DetailsViewController: UIViewController, UITextFieldDelegate {
     private var detailsViewModel: DetailsViewModel
     @Published var itemName: String = ""
     @Published private var canSendMessage: Bool = false
+   // @Published private var canFocusOnTextField: Bool = false
    
     private var cancellables = Set<AnyCancellable>()
     
@@ -39,48 +44,63 @@ class DetailsViewController: UIViewController, UITextFieldDelegate {
         self.tapButton.isEnabled = false
          $canSendMessage.assign(to: \.isEnabled, on: self.tapButton)
                               .store(in: &cancellables)
-        /*textSubscriber = $itemName.sink(receiveCompletion: { (error) in
-                                            print("\(error)")
-                                        }, receiveValue: { (note) in
-                                            print("\(note)")
-                                        })*/
+      //  $canFocusOnTextField.assign(to: \.text, on: self.descriptionTxt)
         
-      /*  $itemName.assign(to:\.text, on: self.descriptionLabel)
-                     .store(in: &cancellables)*/
+        $itemName.sink(receiveCompletion: { (completion) in
+                        switch completion {
+                            case .failure(let error): print("Something went wrong: \(error)")
+                            case .finished: print("Received Completion")
+                        }
+                    }, receiveValue: { [weak self] (note) in
+                        print("Received value:  \(note)")
+                        self?.descriptionLabel.text = note
+                    })
+                    .store(in: &cancellables)
+        
     }
     
     @IBAction func didTapOnButton(_ sender: Any) {
         print("Button is enable")
         if !self.descriptionTxt.isFocused { self.descriptionTxt.becomeFirstResponder() }
-        else { self.descriptionTxt.resignFirstResponder() }
     }
     
     @IBAction func didChangeSwitch(_ sender: Any) {
         if let switchControl: UISwitch = sender as? UISwitch {
             canSendMessage = switchControl.isOn
+            //canFocusOnTextField = switchControl.isOn
         }
     }
     
     @IBAction func didChangeTextOnEdit(_ sender: Any) {
         if let textField: UITextField = sender as? UITextField {
             itemName = textField.text ?? ""
+        }else{
+          //  itemName = Subscribers.Completion<TextInputError>.failure(.justInputError)
         }
     }
     
-    var validateItemName: AnyPublisher<String, Never>{
-        return $itemName
-                .compactMap { note -> String? in
-                    return note
-                }
-                .filter{ $0.count > 0}
-                .eraseToAnyPublisher()
-    }
+//    var validateItemName: AnyPublisher<String, Never>{
+//        return $itemName
+//                .compactMap { note -> String? in
+//                    return note
+//                }
+//                .filter{ $0.count > 0}
+//                .eraseToAnyPublisher()
+//    }
+//
+  
     
     deinit {
         cancellables.removeAll()
     }
    
 }
+
+extension DetailsViewController : UITextFieldDelegate{
+    
+}
+
+
 
 extension Notification.Name{
     static let textDidChange = Notification.Name(rawValue: "Update_Text")
